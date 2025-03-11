@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+*.env
+
+# Django-specific files
+*.log
+db.sqlite3
+/media/
+/staticfiles/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Node modules (if using frontend dependencies)
+node_modules/
+
+# Pip dependencies
+deps/
+
+# Migrations (optional, can be included in repo)
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+
+# Pytest and test-related files
+.pytest_cache/
+__pycache__/
+
+# Docker
+.dockerignore
+
+# MacOS and Windows specific files
+.DS_Store
+Thumbs.db
