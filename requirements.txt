@@ -1,0 +1,16 @@
+Django>=4.0
+django-cors-headers
+python-dotenv
+djangorestframework
+django-storages
+boto3
+psycopg2-binary  # Use this if you're using PostgreSQL; otherwise, install the appropriate DB adapter
+
+# Authentication dependencies
+PyJWT
+django-allauth
+djangorestframework-simplejwt
+
+# Optional (for development)
+django-debug-toolbar
+whitenoise  # For static file handling in production
