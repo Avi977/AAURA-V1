@@ -119,6 +119,8 @@ python manage.py runserver  # Runs backend on localhost:8000
 ```bash
 cd frontend
 npm start  # Runs frontend on localhost:3000
+#or
+npm run dev #runs development mode on localhost:3000
 ```
 
 ---
