@@ -21,7 +21,7 @@ const Login = () => {
     try {
       // Placeholder for authentication logic
       console.log('Logging in with:', { email, password });
-      router.push('/home');
+      router.push('/index');
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setError('Invalid credentials');
