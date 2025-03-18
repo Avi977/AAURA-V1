@@ -79,7 +79,7 @@ https://nodejs.org/en/download/
     "react": "^18.0.0",
     "react-router-dom": "^6.14",
     "axios": "^1.6",
-    "tailwindcss": "^3.0"
+    "tailwindcss": "^4.0"
   }
 }
 ```
