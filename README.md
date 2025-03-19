@@ -79,7 +79,7 @@ https://nodejs.org/en/download/
     "react": "^18.0.0",
     "react-router-dom": "^6.14",
     "axios": "^1.6",
-    "tailwindcss": "^3.0"
+    "tailwindcss": "^4.0"
   }
 }
 ```
@@ -119,6 +119,8 @@ python manage.py runserver  # Runs backend on localhost:8000
 ```bash
 cd frontend
 npm start  # Runs frontend on localhost:3000
+#or
+npm run dev #runs development mode on localhost:3000
 ```
 
 ---
