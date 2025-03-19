@@ -21,7 +21,7 @@ This project is a web application built using **Django (backend)** and **React (
 Before starting, ensure you have the following installed:
 
 - **Python** (>= 3.8)
-- **Node.js** (>= 16)
+- **Node.js** (>= 22)
 - **pip** (Python package manager)
 - **virtualenv** (for Python virtual environment)
 - **PostgreSQL** (Optional, if using PostgreSQL instead of SQLite)
