@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
@@ -12,54 +12,66 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    
-    if (!email || !password) {
+
+    if (!username || !password) {
       setError('Both fields are required');
       return;
     }
-    
+
     try {
-      // Placeholder for authentication logic
-      console.log('Logging in with:', { email, password });
-      router.push('/index');
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const res = await fetch('http://localhost:8000/api/token/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.detail || 'Invalid credentials');
+      }
+
+      // Store JWT token securely (consider HttpOnly cookies for better security)
+      localStorage.setItem('access_token', data.access);
+      localStorage.setItem('refresh_token', data.refresh);
+
+      router.push('/index'); // Redirect on success
     } catch (err) {
-      setError('Invalid credentials');
+      setError((err as Error).message);
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-base-200">
       <div className="card w-96 bg-base-100 shadow-xl p-6">
-        <h2 className="text-2xl font-semibold text-center mb-4 ">Login</h2>
-        {error && <p className="text-error text-sm text-center mb-2 ">{error}</p>}
+        <h2 className="text-2xl font-semibold text-center mb-4">Login</h2>
+        {error && <p className="text-error text-sm text-center mb-2">{error}</p>}
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <label className="label">
-            <span className="label-text ">Email</span>
+            <span className="label-text">Username</span>
           </label>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="input input-bordered w-full"
-            placeholder="Enter your email"
+            placeholder="Enter your username"
             required
           />
           <label className="label">
-            <span className="label-text ">Password</span>
+            <span className="label-text">Password</span>
           </label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="input input-bordered w-full "
+            className="input input-bordered w-full"
             placeholder="Enter your password"
             required
           />
-          <button
-            type="submit"
-            className="btn btn-primary mt-4"
-          >
+          <button type="submit" className="btn btn-primary mt-4">
             Login
           </button>
         </form>
