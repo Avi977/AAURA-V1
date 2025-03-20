@@ -1,7 +1,6 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
+import FAQSection from './components/FAQSection';
 
 export default function Landing() {
   return (
@@ -130,52 +129,7 @@ export default function Landing() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-10 md:py-16">
-          <h2 className="text-2xl md:text-4xl font-bold mb-8">FAQ</h2>
-          <div className="space-y-4">
-            <div className="collapse collapse-plus bg-base-100 shadow">
-              <input type="checkbox" />
-              <div className="collapse-title text-lg font-medium">
-                What is A.U.R.A.?
-              </div>
-              <div className="collapse-content">
-                <p>
-                  A.U.R.A. (AI-Utilized Responsive Assistant) is a web application that
-                  combines voice recognition with AI to help you manage and find your files
-                  using natural language commands.
-                </p>
-              </div>
-            </div>
-
-            <div className="collapse collapse-plus bg-base-100 shadow">
-              <input type="checkbox" />
-              <div className="collapse-title text-lg font-medium">
-                How secure is my data with A.U.R.A.?
-              </div>
-              <div className="collapse-content">
-                <p>
-                  A.U.R.A. uses enterprise-grade security measures to protect your data.
-                  All files are encrypted and stored securely in the cloud, and our
-                  authentication system ensures only you have access.
-                </p>
-              </div>
-            </div>
-
-            <div className="collapse collapse-plus bg-base-100 shadow">
-              <input type="checkbox" />
-              <div className="collapse-title text-lg font-medium">
-                What file types does A.U.R.A. support?
-              </div>
-              <div className="collapse-content">
-                <p>
-                  A.U.R.A. supports all common file types including documents, images, music,
-                  videos, and more. Our AI can help you find any type of file in your storage.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        <FAQSection />
         {/* Final CTA Section */}
         <section className="hero py-10 md:py-16">
           <div className="hero-content flex flex-col items-center text-center">
