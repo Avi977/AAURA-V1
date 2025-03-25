@@ -1,11 +1,20 @@
 'use client'; // Only needed in app router to enable client-side interactivity
 
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import {fetchWithAuth} from "@/utils/api";
+// Define the User type based on your expected response structure
+interface User {
+  username: string;
+  email: string;
+  // Add other fields as needed
+}
 export default function Home() {
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState('Your voice input will appear here...');
-
+  const [user, setUser] = useState<User | null>(null);  // Use the User type here
+  const [loading, setLoading] = useState(true);  // Add loading state
+  const router=useRouter();
   const handleStartRecording = () => {
     // TODO: Implement actual recording logic
     setIsRecording(true);
@@ -18,6 +27,23 @@ export default function Home() {
     setTranscript('This is where your recorded text would appear.');
   };
 
+  //Ace: adding fetchwithauth
+  useEffect(() => {
+    console.log("NEXT_PUBLIC_BACKEND_URL:", process.env.NEXT_PUBLIC_BACKEND_URL);
+
+    async function fetchUser() {
+      try {
+        const data = await fetchWithAuth("/api/user/"); // Call Django API
+        setUser(data);
+      } catch (error) {
+        console.error(error);
+        router.push("/login"); // Redirect if not authenticated
+      }
+    }
+
+    fetchUser();
+  }, []);
+
   return (
     <div data-theme="dark" className="min-h-screen bg-base-200">
       {/* Header / Navbar */}
@@ -26,6 +52,7 @@ export default function Home() {
           <span className="text-xl font-bold">A.U.R.A.</span>
         </div>
         <div className="navbar-end pr-4 space-x-2">
+          <span className="text-sm">Welcome, {user?.username}</span>
           <button className="btn btn-sm btn-outline">Profile</button>
           <button className="btn btn-sm btn-primary">Logout</button>
         </div>
