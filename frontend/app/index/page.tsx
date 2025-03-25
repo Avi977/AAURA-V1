@@ -29,7 +29,6 @@ export default function Home() {
 
   //Ace: adding fetchwithauth
   useEffect(() => {
-    console.log("NEXT_PUBLIC_BACKEND_URL:", process.env.NEXT_PUBLIC_BACKEND_URL);
 
     async function fetchUser() {
       try {
