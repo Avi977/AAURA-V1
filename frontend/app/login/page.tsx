@@ -81,7 +81,7 @@ const Login = () => {
           <button
             type="button"
             onClick={handleRegisterRedirect}
-            className="btn btn-secondary"
+            className="btn btn-sm btn-outline"
           >
             Register Now
           </button>

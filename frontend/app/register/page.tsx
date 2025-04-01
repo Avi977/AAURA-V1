@@ -119,7 +119,7 @@ const Register = () => {
           <button
             type="button"
             onClick={handleLoginRedirect}
-            className="btn btn-secondary"
+            className="btn btn-sm btn-outline"
           >
             Back to Login
           </button>

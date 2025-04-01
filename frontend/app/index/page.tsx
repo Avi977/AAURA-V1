@@ -13,6 +13,7 @@ export default function Home() {
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState('Your voice input will appear here...');
   const [user, setUser] = useState<User | null>(null);  // Use the User type here
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState(true);  // Add loading state
   const router=useRouter();
   const handleStartRecording = () => {
@@ -41,6 +42,7 @@ export default function Home() {
     }
 
     fetchUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
