@@ -2,12 +2,15 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { EyeIcon, EyeOffIcon } from 'lucide-react';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
 
@@ -40,7 +43,7 @@ const Register = () => {
         throw new Error(data.detail || 'Registration failed');
       }
 
-      router.push('/login'); // Redirect to login after successful registration
+      router.push('/login');
     } catch (err) {
       setError((err as Error).message);
     }
@@ -88,28 +91,48 @@ const Register = () => {
             <label className="label">
               <span className="label-text">Password</span>
             </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="input input-bordered w-full"
-              placeholder="Enter password"
-              required
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="input input-bordered w-full pr-10"
+                placeholder="Enter password"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-2 flex items-center"
+                tabIndex={-1}
+              >
+                {showPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
+              </button>
+            </div>
           </div>
 
           <div>
             <label className="label">
               <span className="label-text">Confirm Password</span>
             </label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="input input-bordered w-full"
-              placeholder="Re-enter password"
-              required
-            />
+            <div className="relative">
+              <input
+                type={showConfirmPassword ? 'text' : 'password'}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="input input-bordered w-full pr-10"
+                placeholder="Re-enter password"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="absolute inset-y-0 right-2 flex items-center"
+                tabIndex={-1}
+              >
+                {showConfirmPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
+              </button>
+            </div>
           </div>
 
           <button type="submit" className="btn btn-primary mt-4">
