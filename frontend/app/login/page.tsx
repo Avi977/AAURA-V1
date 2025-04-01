@@ -43,6 +43,10 @@ const Login = () => {
     }
   };
 
+  const handleRegisterRedirect = () => {
+    router.push('/register');
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-base-200">
       <div className="card w-96 bg-base-100 shadow-xl p-6">
@@ -73,6 +77,13 @@ const Login = () => {
           />
           <button type="submit" className="btn btn-primary mt-4">
             Login
+          </button>
+          <button
+            type="button"
+            onClick={handleRegisterRedirect}
+            className="btn btn-secondary"
+          >
+            Register Now
           </button>
         </form>
       </div>
