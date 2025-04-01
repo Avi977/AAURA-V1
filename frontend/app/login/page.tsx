@@ -1,9 +1,8 @@
 'use client';
 
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { EyeIcon, EyeOffIcon } from 'lucide-react'; // Or use react-icons if preferred
+import { EyeIcon, EyeClosedIcon } from 'lucide-react'; // Or use react-icons if preferred
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -85,7 +84,7 @@ const Login = () => {
               className="absolute inset-y-0 right-2 flex items-center"
               tabIndex={-1}
             >
-              {showPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
+              {showPassword ? <EyeClosedIcon size={20} /> : <EyeIcon size={20} />}
             </button>
           </div>
 

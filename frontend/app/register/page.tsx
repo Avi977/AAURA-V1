@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { EyeIcon, EyeOffIcon } from 'lucide-react';
+import { EyeIcon, EyeClosedIcon } from 'lucide-react';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -106,7 +106,7 @@ const Register = () => {
                 className="absolute inset-y-0 right-2 flex items-center"
                 tabIndex={-1}
               >
-                {showPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
+                {showPassword ? <EyeClosedIcon size={20} /> : <EyeIcon size={20} />}
               </button>
             </div>
           </div>
@@ -130,7 +130,7 @@ const Register = () => {
                 className="absolute inset-y-0 right-2 flex items-center"
                 tabIndex={-1}
               >
-                {showConfirmPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
+                {showConfirmPassword ? <EyeClosedIcon size={20} /> : <EyeIcon size={20} />}
               </button>
             </div>
           </div>
