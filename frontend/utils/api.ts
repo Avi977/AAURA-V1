@@ -21,11 +21,6 @@ export const fetchWithAuth = async (endpoint: string, options: RequestInit = {})
         headers,
         credentials: "include",
     });
-
-    if (!response.ok) {
-        console.error(`Error ${response.status}: ${response.statusText}`);
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
-    }
-
-    return response.json();
+    // return response.json();
+    return response; // Return the raw response for further processing
 };
