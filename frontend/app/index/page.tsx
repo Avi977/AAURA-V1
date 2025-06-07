@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {fetchWithAuth} from "@/utils/api";
+import FileUpload from '../components/FileUpload';
 // Define the User type based on your expected response structure
 interface User {
   username: string;
@@ -32,7 +33,12 @@ export default function Home() {
 
     async function fetchUser() {
       try {
-        const data = await fetchWithAuth("/api/user/"); // Call Django API
+        const response = await fetchWithAuth("/api/user/"); // Call Django API
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.detail || `Error ${response.status}: Failed to fetch user`);
+        }
+        const data = await response.json();
         setUser(data);
       } catch (error) {
         console.error(error);
@@ -81,6 +87,11 @@ export default function Home() {
           <div className="p-4 bg-base-200 rounded">
             <p>{transcript}</p>
           </div>
+        </section>
+        {/* File Upload Section */}
+        <section className="card bg-base-100 shadow-xl p-6 mb-8 m-5">
+          <h2 className="text-xl font-semibold mb-4">Upload Your Files</h2>
+          <FileUpload /> {/* Insert the FileUpload component here */}
         </section>
 
         {/* Folders Grid Section */}

@@ -84,6 +84,10 @@ https://nodejs.org/en/download/
 }
 ```
 
+## use : npm run dev
+
+in terminal to run frontend
+
 ## **4. AWS S3 Integration**
 
 ### **Install AWS SDK for Django**
